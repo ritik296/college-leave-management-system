@@ -1,0 +1,21 @@
+extends base.pug
+
+block heading 
+    |Notification
+
+block navigation
+    <span class="text-[#607d8b] text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+    <a href="/notifications">  
+        <p class="block antialiased font-sans text-sm leading-normal text-[#263238] font-normal">Notification</p>
+    </a>
+
+block content
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Notifications</h1>
+        
+        <div id="notification-container" class="container mt-5">
+        </div>
+    </div>
+
+
+    script(src="../javascript/application/notification.js")

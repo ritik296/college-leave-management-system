@@ -1,0 +1,84 @@
+extends base.pug
+
+block content 
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Add User</h1>
+
+        <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact</label>
+                <input type="text" id="contact" name="contact" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="user-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Id</label>
+                <input type="text" id="user-id" name="user-id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+                <input type="date" placeholder="YYYY-MM-DD" id="dob" name="dob" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester</label>
+                <select id="semester" name="semester" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="1">1<sup>st</sup></option>
+                    <option value="2">2<sup>nd</sup></option>
+                    <option value="3">3<sup>rd</sup></option>
+                    <option value="4">4<sup>th</sup></option>
+                    <option value="5">5<sup>th</sup></option>
+                    <option value="6">6<sup>th</sup></option>
+                    <option value="7">7<sup>th</sup></option>
+                    <option value="8">8<sup>th</sup></option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
+                <select id="branch" name="branch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="AIDS">AIDS</option>
+                    <option value="CS">CS</option>
+                    <option value="ME">ME</option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
+                <select id="section" name="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batch</label>
+                <select id="batch" name="batch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="2020-24">2020-24</option>
+                    <option value="2021-25">2021-25</option>
+                    <option value="2022-26">2022-26</option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batch</label>
+                <select id="role" name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="hod">Head of Department</option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full mx-auto mt-4">
+                <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="createAccount()">Get Student List</button>
+            </div>
+
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+        </div>  
+    </div>
+
+    script(src="../javascript/admin/addUser.js")

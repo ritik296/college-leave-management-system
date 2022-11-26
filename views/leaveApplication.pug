@@ -1,0 +1,40 @@
+extends base.pug
+
+block heading 
+    |Home
+
+block navigation
+    //- <span class="text-[#607d8b] text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+    //- <a href="/">  
+    //-     <p class="block antialiased font-sans text-sm leading-normal text-[#263238] font-normal">home</p>
+    //- </a>
+
+block  content
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Application For Leave</h1>
+        <div class="m-5 flex flex-wrap sm:flex-row flex-col">
+            <div class="w-full">
+                <label class="block text-lg font-bold text-[#263238]" for="application-body">Subject of application</label>
+                <input type="subject" class="block mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none mb-4" name="application-subject" id="application-subject"></input >
+            </div>
+            <div class="w-full">
+                <label class="block text-lg font-bold text-[#263238]" for="application-body">Write reason for leave here</label>
+                <textarea class="block mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none" name="application-body" id="application-body" cols="30" rows="5"></textarea>
+            </div>
+            <div class="w-40 mr-7">
+                <label for="leave-from" class="block text-lg font-bold text-[#263238] mt-5">Leave from</label>
+                <input class="mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none" type="date" name="leave-from" id="leave-from" >
+            </div>
+            <div class="w-40">
+                <label for="leaves-days" class="block text-lg font-bold text-[#263238] mt-5">Enter leaves days</label>
+                <input class="mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none" type="number" name="leaves-days" id="leaves-days" placeholder="2" min="1" max="7">
+            </div>
+            <div class="w-full mt-7">
+                <input type="file" id="file" class="">
+            </div>
+            <p id="update" class="text-sm text-red-500 hidden mt-4"></p>
+            <button class="w-full h-16 bg-gradient-to-tr from-blue-600 to-blue-400 mt-6 rounded-xl text-white font-bold text-xl" onclick="sendApplication()">SEND APPLICATION</button>
+        </div>
+    </div>
+
+    script(src="../javascript/application/leaveApplication.js")

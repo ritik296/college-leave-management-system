@@ -1,0 +1,48 @@
+extends base.pug
+
+block heading 
+    |Attendance Status
+
+block navigation
+    <span class="text-[#607d8b] text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+    <a href="/attendance-status">  
+        <p class="block antialiased font-sans text-sm leading-normal text-[#263238] font-normal">attendance-status</p>
+    </a>
+
+block content 
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Your Attendance</h1>
+
+        <div class="">
+
+            <div class="flex flex-wrap flex-row w-full mt-8 bg-slate-50 text-gray-800 font-semibold text-center shadow-md rounded-xl">
+                <div id="" class="w-full my-4 font-bold text-xl">Summary</div>
+
+                <div id="your-total-class" class="md:w-1/4 w-full my-4">Total Leacture: - 20</div>
+                <div id="your-total-present" class="md:w-1/4 w-full my-4">Total Present: - 20</div>
+                <div id="your-total-absent" class="md:w-1/4 w-full my-4">Total Absent: - 20</div>
+                <div id="your-total-leave" class="md:w-1/4 w-full my-4">Total Leave: - 20</div>
+            </div>
+
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-7">
+                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">S. No.</th>
+                            <th scope="col" class="py-3 px-6">Date </th>
+                            <th scope="col" class="py-3 px-6">Subject</th>
+                            <th scope="col" class="py-3 px-6">Lecture No.</th>
+                            <th scope="col" class="py-3 px-6">Attendance Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="your-attendance-container" >
+                        <!-- container to populate student attendance status  -->
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    script(src="../javascript/attendance/attendanceStatus.js")

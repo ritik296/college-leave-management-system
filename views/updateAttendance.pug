@@ -1,0 +1,47 @@
+extends base.pug
+
+block heading 
+    |Update Attendance
+
+block navigation
+    <span class="text-[#607d8b] text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+    <a href="/update-attendance">  
+        <p class="block antialiased font-sans text-sm leading-normal text-[#263238] font-normal">Update-attendance</p>
+    </a>
+
+
+block content
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Update Attendance</h1>
+
+        <div id="class-detail-container" class="mt-8 justify-center">
+            <div class="lg:w-96 sm:w-96 w-full mx-auto mt-4">
+                <label for="subject-code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Subject Code</label>
+                <input type="text" id="subject-code" name="subject-code" placeholder="Enter here" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="lecture-date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                <input type="text" placeholder="YYYY-MM-DD" id="lecture-date" name="lecture-date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="lecture-no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Number of Lecture</label>
+                <select id="lecture-no" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected value="1">1<sup>st</sup></option>
+                    <option value="2">2<sup>nd</sup></option>
+                    <option value="3">3<sup>rd</sup></option>
+                    <option value="4">4<sup>th</sup></option>
+                    <option value="5">5<sup>th</sup></option>
+                    <option value="6">6<sup>th</sup></option>
+                </select>
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
+                <label for="enroll-no" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter Enrollment Number</label>
+                <input type="text" id="enroll-no" name="enroll-no" placeholder="Enroll no." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-96 sm:w-96 w-full mx-auto">
+                <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="updateStudentAttendance()">Get Student List</button>
+            </div>
+        </div>  
+    </div>
+
+    script(src="../javascript/attendance/updateAttendance.js")
