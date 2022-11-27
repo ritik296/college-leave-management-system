@@ -60,6 +60,17 @@ router.get('/navigation', async (req, res) => {
     }
 });
 
+router.get('/change-password', getCookieForId, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findOne({"_id": userId}).select(["name", "-_id", "role"]);
+        res.status(200).render('changePassword', {user: user, currentPage: "change-password"});
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("<h1>Internal server error</h1>");
+    }
+});
+
 router.get('*', async (req, res) => {
     try {
         res.status(404).render('error');

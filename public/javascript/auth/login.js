@@ -1,9 +1,21 @@
 const userId = document.getElementById('user-id');
 const password = document.getElementById('password');
 const update = document.getElementById('error');
+const spinner = document.getElementById('progress-spinner');
+
+function openSpinner(){
+    spinner.classList.remove('-translate-y-20');
+    spinner.classList.add('translate-y-0');
+}
+
+function closeSpinner(){
+    spinner.classList.remove('translate-y-0');
+    spinner.classList.add('-translate-y-20');
+}
 
 async function signIn() {
     // console.log(userId.value, " ", password.value);
+    openSpinner();
     let res = await fetch('/api/v1/auth/login', {
         method: 'POST',
         body: JSON.stringify({
@@ -33,4 +45,5 @@ async function signIn() {
             window.open('/', '_self');
         }, 500);
     }
+    closeSpinner();
 }

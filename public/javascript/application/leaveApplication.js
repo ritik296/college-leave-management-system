@@ -1,10 +1,19 @@
-const applicationBody = document.getElementById('application-body');
 const applicationSubject = document.getElementById('application-subject');
 const applicationleaveDays = document.getElementById('leaves-days');
 const leaveFrom = document.getElementById('leave-from');
 const updateMessage = document.getElementById('update');
 const file = document.getElementById('file');
+let applicationBody ;
 
+
+ClassicEditor
+.create( document.querySelector( '#application-body' ) )
+.then(editor => {
+    applicationBody = editor;
+})
+.catch(error => {
+    console.error( error );
+});
 
 async function sendApplication() {
     openSpinner();
@@ -25,7 +34,7 @@ async function sendApplication() {
     var data = new FormData();
     data.append('file', file.files[0]);
     data.append('subject', applicationSubject.value);
-    data.append('reason', applicationBody.value);
+    data.append('reason', applicationBody.getData());
     data.append('leave', !applicationleaveDays.value ? 2 : applicationleaveDays.value);
     data.append('from', leaveFrom.value);
     data.append('to', `${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
@@ -33,7 +42,7 @@ async function sendApplication() {
     // data.append('file', file.files[0], {filename: file.originalname});
     console.log(data.file);
     
-    if(applicationBody.value.length < 15){ 
+    if(applicationBody.getData().length < 25){ 
         updateMessage.classList.remove('hidden');
         updateMessage.innerText = "Reason must be detailed.";
         return;
@@ -57,7 +66,7 @@ async function sendApplication() {
         update.innerText = resData['message'];
         alert('Application sended wait for responce.');
         closeSpinner();
-        applicationBody.value = "";
+        applicationBody.setData("");
         applicationSubject.value = "";
         applicationleaveDays.value = "";
         leaveFrom.value = "";
@@ -79,4 +88,8 @@ function isFutureDate(idate){
     // idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
     idate = new Date(idate).getTime();
     return (today - idate) < 0;
+}
+
+function textChange(){
+    console.log(applicationBody.getData())
 }

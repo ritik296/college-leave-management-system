@@ -7,9 +7,10 @@ html(lang="en")
         //- link(href="../styles/styles.css", rel="stylesheet")
         script(src="https://cdn.tailwindcss.com")
         title Piemr
-        //- block title
+        //- block 
         block script
         block style
+        
 
     body 
       - var sty = 'bg-gradient-to-tr from-blue-600 to-blue-400'
@@ -20,6 +21,8 @@ html(lang="en")
           - var application = sty
         else if currentPage == "notification"
           - var notifactions = sty
+        else if currentPage == "change-password"
+          - var changePassword = sty
 
         <div class="min-h-screen bg-[#eceff183]">
             if user.role == "student"
@@ -58,6 +61,14 @@ html(lang="en")
                             <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"></path>
                           </svg>
                           <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">notifications</p>
+                        </button>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="" href="/change-password">
+                        <button class="#{changePassword} middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button" style="position: relative; overflow: hidden;">
+                          <img class="w-5 h-5 text-inherit" src="../static/key.svg" alt="">
+                          <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">change password</p>
                         </button>
                       </a>
                     </li>
@@ -116,6 +127,14 @@ html(lang="en")
                         </button>
                       </a>
                     </li>
+                    <li>
+                      <a class="" href="/change-password">
+                        <button class="#{changePassword} middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button" style="position: relative; overflow: hidden;">
+                          <img class="w-5 h-5 text-inherit" src="../static/key.svg" alt="">
+                          <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">change password</p>
+                        </button>
+                      </a>
+                    </li>
                   </ul>
                   <ul class="mb-4 flex flex-col gap-1">
                     <li class="mx-3.5 mt-4 mb-2">
@@ -134,7 +153,7 @@ html(lang="en")
               </div>
                         
             <div class="p-4 xl:ml-80 relative">
-              <div id="progress-spinner" role="status" class="absolute top-10 mx-auto w-5 left-0 right-0 -translate-y-20 ease-in-out transition-transform duration-300">
+              <div id="progress-spinner" role="status" class="absolute top-[4vh] mx-auto w-5 left-0 right-0 -translate-y-20 ease-in-out transition-transform duration-300">
                 <svg class="inline mr-2 w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
                   <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>

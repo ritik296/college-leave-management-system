@@ -20,7 +20,7 @@ const adminBro = new AdminBro({
             properties: {
                 password: {
                     isVisible: {
-                        show: false, edit: false, filter: false, list: false
+                        show: false, edit: true, filter: false, list: false
                     },
                 },
                 createdAt: {

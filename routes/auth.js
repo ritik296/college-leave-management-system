@@ -61,10 +61,11 @@ router.post('/getuser', fetchuser, async (req, res) => {
 });
 
 // change password with old id and password
-router.put('/change_pass', async (req, res) => {
+router.put('/change_pass', fetchuser, async (req, res) => {
     try {
-        const {userId, password, newPassword} = req.body;
-        let user = await User.findOne({"userId": userId});
+        const {password, newPassword} = req.body;
+        const userId = req.user.id;
+        let user = await User.findOne({"_id": userId});
 
         if(!user){
             return res.status(400).json({error: "please contact with your collage or use correct cred."});

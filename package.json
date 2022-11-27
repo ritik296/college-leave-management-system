@@ -28,7 +28,8 @@
     "npm": "^9.1.1",
     "path": "^0.12.7",
     "pug": "^3.0.2",
-    "tslib": "^2.4.1"
+    "tslib": "^2.4.1",
+    "two-step-auth": "^1.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

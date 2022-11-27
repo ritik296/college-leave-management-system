@@ -22,7 +22,7 @@ async function updatePassword() {
     if(res.status == 401) {
         alert("Login with correct credentails.");
         sessionStorage.clear();
-        document.cookie = 'auth-token=';
+        document.cookie = 'admin-token=';
         window.open('/admin-dashboard/login', '_self');
     }
     else if(res.status == 200){
