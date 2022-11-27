@@ -40,7 +40,7 @@ async function sendApplication() {
     data.append('to', `${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
 
     // data.append('file', file.files[0], {filename: file.originalname});
-    console.log(data.file);
+    // console.log(data.file);
     
     if(applicationBody.getData().length < 25){ 
         updateMessage.classList.remove('hidden');
