@@ -2407,6 +2407,20 @@ acorn@^7.0.0, acorn@^7.1.1:
   resolved "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
+admin-bro-expressjs@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/admin-bro-expressjs/-/admin-bro-expressjs-2.1.1.tgz#2b6c68eee2e522c57cc293c5e367fa477d907afb"
+  integrity sha512-xTGmyqT+HvSIy4DLLET9JSvEMt1KrbDIbcZ0H6VgO+l6i8vbcmR1T+k1efx9TXfMZCIMOhUwIS2u4ja4iQMH1Q==
+
+admin-bro-mongoose@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/admin-bro-mongoose/-/admin-bro-mongoose-0.5.2.tgz#06cc6a3a7a12432f69160228395912352b7d38e1"
+  integrity sha512-X93oGMySeWsl9ZzrbHSZninmB103p22gNK4/VrPA9MSUUyfWMHruCM/SQXK9guG2RjkIlpPI+xUV0jzNeN0gfQ==
+  dependencies:
+    escape-regexp "0.0.1"
+    flat "^4.1.0"
+    lodash "^4.17.11"
+
 admin-bro@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/admin-bro/-/admin-bro-4.0.1.tgz#0f193371396175f235b7dd76134e04bc05e1bc3a"
@@ -3430,7 +3444,7 @@ express-formidable@^1.2.0:
 
 express-session@^1.17.3:
   version "1.17.3"
-  resolved "https://registry.npmjs.org/express-session/-/express-session-1.17.3.tgz"
+  resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.17.3.tgz#14b997a15ed43e5949cb1d073725675dd2777f36"
   integrity sha512-4+otWXlShYlG1Ma+2Jnn+xgKUZTMJ5QD3YvfilX3AcocOAbIkVylSWEklzALe/+Pu4qV6TYBj5GwOBFfdKqLBw==
   dependencies:
     cookie "0.4.2"
