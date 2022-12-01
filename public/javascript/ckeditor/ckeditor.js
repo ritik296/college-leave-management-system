@@ -26560,6 +26560,7 @@
                 o.addEventListener("abort", () => e()),
                 o.addEventListener("load", () => {
                   const n = o.response;
+                  // console.log(n);
                   if (!n || !n.uploaded)
                     return e(
                       n && n.error && n.error.message ? n.error.message : r

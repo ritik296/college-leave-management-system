@@ -10,8 +10,8 @@ let applicationBody ;
 ClassicEditor
 .create( document.querySelector( '#application-body' ),{
     ckfinder: {
-        // uploadUrl: '/upload/image?command=QuickUpload&type=Files&responseType=json'
-        uploadUrl: 'https://cksource.com/weuy2g4ryt278ywiue/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+        uploadUrl: '/upload/image?command=QuickUpload&type=Files&responseType=json'
+        // uploadUrl: '/cksource.com/weuy2g4ryt278ywiue/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
     }
 } )
 .then(editor => {
