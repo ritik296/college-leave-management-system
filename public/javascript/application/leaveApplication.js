@@ -2,6 +2,7 @@ const applicationSubject = document.getElementById('application-subject');
 const applicationleaveDays = document.getElementById('leaves-days');
 const leaveFrom = document.getElementById('leave-from');
 const updateMessage = document.getElementById('update');
+const attachedFileName = document.getElementById('attached-file-name');
 const file = document.getElementById('file');
 let applicationBody ;
 
@@ -92,4 +93,8 @@ function isFutureDate(idate){
 
 function textChange(){
     console.log(applicationBody.getData())
+}
+
+function onAttachFile() {
+    attachedFileName.innerText = file.files.item(0).name;
 }
