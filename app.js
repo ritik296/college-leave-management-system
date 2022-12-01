@@ -22,6 +22,7 @@ app.use('/api/v1/application', require('./routes/application'));
 app.use('/api/v1/class', require('./routes/class'));
 app.use('/api/v1/otp', require('./routes/otp'));
 app.use('/api/admin/', require('./routes/admin/adminApi'));
+app.use('/upload', require('./routes/uploadImage'));
 
 app.use('/admin', require('./routes/admin/admin.router'));
 

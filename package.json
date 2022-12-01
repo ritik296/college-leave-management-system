@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ckeditor/ckeditor5-image": "^35.3.2",
     "admin-bro": "^4.0.1",
     "admin-bro-expressjs": "^2.1.1",
     "admin-bro-mongoose": "^0.5.2",

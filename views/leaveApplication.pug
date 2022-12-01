@@ -12,9 +12,9 @@ block navigation
 block script
 
 block  content
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
-    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/balloon/ckeditor.js"></script> -->
-
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script> -->
+    <script src="./javascript/ckeditor/ckeditor.js"></script>
+    <!-- <script type="module" src="milsymbol-2.0.0/src/milsymbol.js"></script> -->
     <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
         <h1 class="text-center text-3xl font-bold text-[#263238]">Application For Leave</h1>
         <div class="m-5 flex flex-wrap sm:flex-row flex-col">
@@ -24,7 +24,7 @@ block  content
             </div>
             <div class="w-full">
                 <label class="block text-lg font-bold text-[#263238]" for="application-body">Write reason for leave here</label>
-                <textarea class="block mt-2 border-2 rounded-lg px-3 py-2 w-full h-96 focus:outline-none" name="application-body" id="application-body" cols="30" rows="20"></textarea>
+                <textarea class="block mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none" name="application-body" id="application-body"></textarea>
             </div>
             <div class="w-40 mr-7">
                 <label for="leave-from" class="block text-lg font-bold text-[#263238] mt-5">Leave from</label>
@@ -34,9 +34,6 @@ block  content
                 <label for="leaves-days" class="block text-lg font-bold text-[#263238] mt-5">Enter leaves days</label>
                 <input class="mt-2 border-2 rounded-lg px-3 py-2 w-full focus:outline-none" type="number" name="leaves-days" id="leaves-days" placeholder="2" min="1" max="7">
             </div>
-            //- <div class="w-full mt-7">
-            //-     <input type="file" id="file" class="">
-            //- </div>
             <div class="flex items-center justify-center w-full mt-3">
                 <label for="file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
