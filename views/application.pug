@@ -1,11 +1,24 @@
 extends base.pug
 
+block heading
+    <span id="block-heading">Home</span>
+
+block navigation
+    <span id="block-navigation" class="flex flex-wrap">
+        <span class="text-[#607d8b] text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none">/</span>
+        <span onclick="backApplication()">  
+            <p class="block antialiased font-sans text-sm leading-normal text-[#263238] font-normal">Applications</p>
+        </span>
+    </span>
 
 block content
 
-    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8 relative">
         <div class="">
-            <h1 class="text-center text-3xl font-bold text-[#263238]">Applications of Student</h1>
+            <button id="backBtn" class="w-12 h-12 text-black absolute top-4 left-4 hidden" onclick="backApplication()">
+                <img src="../static/back.svg" alt="">
+            </button>
+            <h1 class="text-center text-3xl font-bold text-[#263238]">Applications of <span id="student-name">Students</span></h1>
 
             <div class="container mx-auto flex flex-wrap flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl">
                 <div id="" class="w-full my-4 font-bold text-xl">Summary</div>
