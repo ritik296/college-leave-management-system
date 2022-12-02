@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro({
-    databases: [mongoose],
+    // databases: [mongoose],
     resources: [{
         resource: require('../../models/Student'),
         options: {
@@ -34,6 +34,7 @@ const adminBro = new AdminBro({
                     },
                 }
             },
+            // listProperties: ['fileUrl', 'mimeType'],
         },
     },
     {
@@ -105,7 +106,7 @@ const adminBro = new AdminBro({
         logo: '../../static/logo.png',
         companyName: "Student Leave Management System"
     },
-
+    logoutPath: '/admin/logout',
 })
 
 const ADMIN = {

@@ -36,12 +36,12 @@ async function sendApplication() {
         closeSpinner();
         return;
     }
-    let to = d = new Date((new Date(leaveFrom.value)).getTime() + applicationleaveDays.value*24*60*60*1000);
+    let to = d = new Date((new Date(leaveFrom.value)).getTime() + !applicationleaveDays.value ? 24*60*60*1000 : applicationleaveDays.value*24*60*60*1000 );
     var data = new FormData();
     data.append('file', file.files[0]);
     data.append('subject', applicationSubject.value);
     data.append('reason', applicationBody.getData());
-    data.append('leave', !applicationleaveDays.value ? 2 : applicationleaveDays.value);
+    data.append('leave', !applicationleaveDays.value ? 1 : applicationleaveDays.value);
     data.append('from', leaveFrom.value);
     data.append('to', `${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
 

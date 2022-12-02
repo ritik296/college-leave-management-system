@@ -1,4 +1,8 @@
 const noticationContainer = document.getElementById('notification-container');
+const totalApplication = document.getElementById('total-applications');
+const totalPending = document.getElementById('total-pending');
+const totalApproved = document.getElementById('total-approved');
+const totalReject = document.getElementById('total-rejected');
 // const applicationleaveDays = document.getElementById('leaves-days');
 // const updateMessage = document.getElementById('update');
 
@@ -83,14 +87,24 @@ async function getNotification() {
 getNotification();
 
 function setNotiCard(application){
+    let total = 0;
+    let pending = 0;
+    let approved = 0;
+    let rejected = 0;
     let html = '';
     for(let ele of application){
         // console.log(ele);
+        total++;
+        ele.status == 'pending'? pending++ : ele.status == 'rejected' ? rejected++ : approved++;
         html += notificationCard(ele);
     }
+    noticationContainer.innerHTML = html;
+    totalApplication.innerText = `Total Applications: - ${total}`;
+    totalPending.innerText = `Total Pending: - ${pending}`;
+    totalApproved.innerText = `Total Approved: - ${approved}`;
+    totalReject.innerText = `Total Rejected: - ${rejected}`;
     // console.log("done");
     
-    noticationContainer.innerHTML = html;
 }
 
 function toggleNotiCard(eleId){
