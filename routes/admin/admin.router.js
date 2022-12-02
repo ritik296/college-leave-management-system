@@ -2,6 +2,8 @@ const AdminBro = require('admin-bro');
 const AdminBroExpress = require('admin-bro-expressjs');
 const AdminBroMongoose = require('admin-bro-mongoose');
 const bcrypt = require('bcryptjs');
+// const importExportFeature = require('@adminjs/import-export');
+// import importExportFeature from '@adminjs/import-export';
 
 const mongoose = require('mongoose');
 
@@ -34,6 +36,7 @@ const adminBro = new AdminBro({
                     },
                 }
             },
+            // features: [importExportFeature(),]
             // listProperties: ['fileUrl', 'mimeType'],
         },
     },

@@ -3,14 +3,17 @@ const totalApplication = document.getElementById('total-applications');
 const totalPending = document.getElementById('total-pending');
 const totalApproved = document.getElementById('total-approved');
 const totalReject = document.getElementById('total-rejected');
+const searchHere = document.getElementById('search-here');
 // const applicationleaveDays = document.getElementById('leaves-days');
 // const updateMessage = document.getElementById('update');
+
+var applicationsData;
 
 
 function notificationCard({leave, reason, subject, from, to, createdAt, file, status, studentDetail, _id}){
     let s = new Date(from);
     let e = new Date(to);
-    let html = `<div class="card p-5 rounded-xl border mb-6 shadow-lg ${status === "pending"? 'bg-yellow-100' : status === 'approved'? 'bg-green-200': 'bg-red-100'}" onclick="toggleNotiCard('${createdAt}')">
+    let html = `<div id="${createdAt}card" class="card p-5 rounded-xl border mb-6 shadow-lg ${status === "pending"? 'bg-yellow-100' : status === 'approved'? 'bg-green-200': 'bg-red-100'}" onclick="toggleNotiCard('${createdAt}')">
                     <div class="head-of-application flex justify-center items-center">
                         <div class="left w-5/6">
                             <h1 class="text-xl text-[#263238] font-bold">${studentDetail.name}</h1>
@@ -75,6 +78,7 @@ async function getNotification() {
 
     if(res.status == 200){
         let resData = await res.json();
+        applicationsData = resData;
         setNotiCard(resData.notifications);
         closeSpinner();
     }
@@ -117,3 +121,25 @@ function toggleNotiCard(eleId){
         cardBody.classList.add('hidden');
     }
 }
+
+searchHere.addEventListener("input", () => {
+    // console.log("change")
+    let total = 0;
+    let pending = 0;
+    let approved = 0;
+    let rejected = 0;
+    for(let ele of applicationsData.notifications){
+        let c = document.getElementById(`${ele.createdAt}card`);
+        if(!(ele.studentDetail.name.toLowerCase()).includes(searchHere.value.toLowerCase())){
+            c.classList.add('hidden');
+        } else {
+            c.classList.remove('hidden');
+            total++;
+            ele.status == "pending" ? pending++ : ele.status == "approved" ? approved++ : rejected++;
+        }
+    }
+    totalApplication.innerHTML = `Total Applications: - ${total}`;
+    totalPending.innerHTML = `Total Pending: - ${pending}`;
+    totalApproved.innerHTML = `Total Approved: - ${approved}`;
+    totalReject.innerHTML = `Total Rejected: - ${rejected}`;
+});

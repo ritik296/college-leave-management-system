@@ -16,6 +16,13 @@ ClassicEditor
 } )
 .then(editor => {
     applicationBody = editor;
+    // editor.ui.view.toolbar.element.style.border = 'none';
+    // editor.ui.view.editable.element.style.border = 'none';
+    // editor.ui.view.editable.element.addEventListener("focus", function () {
+    //     this.style.border = "none";  
+    //     this.style.boxShadow = 'none';
+    // });
+    
 })
 .catch(error => {
     console.error( error );
