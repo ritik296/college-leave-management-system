@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 const { Schema } = mongoose;
-const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new Schema({
@@ -45,6 +45,7 @@ userSchema.methods.comparePassword = async function comparePassword(data) {
   return bcrypt.compare(data, this.password);
 };
 
-module.exports = mongoose.model('user', userSchema);
+// module.exports = mongoose.model('user', userSchema);
+export default mongoose.model('user', userSchema);
 
 // , default: `${(new Date()).getFullYear}-${parseInt((new Date()).getFullYear)%1000}`

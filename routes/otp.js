@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import User from "../models/Student.js";
+import Otp from "../models/Otp.js";
+import jwt from 'jsonwebtoken';
+import { Auth, LoginCredentials } from "two-step-auth";
+
 const router = express.Router();
-const User = require("../models/Student");
-const Otp = require("../models/Otp");
-const jwt = require('jsonwebtoken');
-const { Auth, LoginCredentials } = require("two-step-auth");
 
 router.post('/forget-password', async (req, res) => {
     try {
@@ -45,4 +46,5 @@ router.post('/forget-password', async (req, res) => {
 });
 
 
-module.exports = router;
+// module.exports = router;
+export default router;

@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import User from "../../models/Student.js";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import checkAdmin from '../../middleware/checkAdmin.js';
+import { body, validationResult} from 'express-validator';
+
 const router = express.Router();
-const User = require("../../models/Student");
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const checkAdmin = require('../../middleware/checkAdmin');
-const { body, validationResult} = require('express-validator');
 
 router.post('/admin-login', async (req, res) => {
     try {
@@ -95,4 +96,5 @@ router.put('/forget_pass', checkAdmin, async (req, res) => {
     res.status(200).json({"message": "Password updated successfully"});
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

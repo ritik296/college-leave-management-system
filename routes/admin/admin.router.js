@@ -1,18 +1,23 @@
-const AdminBro = require('admin-bro');
-const AdminBroExpress = require('admin-bro-expressjs');
-const AdminBroMongoose = require('admin-bro-mongoose');
-const bcrypt = require('bcryptjs');
+import AdminBro from 'admin-bro';
+import AdminBroExpress from 'admin-bro-expressjs';
+import AdminBroMongoose from 'admin-bro-mongoose';
+import bcrypt from 'bcryptjs';
 // const importExportFeature = require('@adminjs/import-export');
-// import importExportFeature from '@adminjs/import-export';
+import importExportFeature from '@adminjs/import-export';
+// console.log(importExportFeature.default())
+import mongoose from 'mongoose';
 
-const mongoose = require('mongoose');
+import User from '../../models/Student.js';
+import Classes from '../../models/Classes.js';
+import Application from '../../models/Application.js';
+
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
 const adminBro = new AdminBro({
     // databases: [mongoose],
     resources: [{
-        resource: require('../../models/Student'),
+        resource: User,
         options: {
             parent: {
                 name: 'Users Database',
@@ -36,12 +41,12 @@ const adminBro = new AdminBro({
                     },
                 }
             },
-            // features: [importExportFeature(),]
+            features: [importExportFeature.default()]
             // listProperties: ['fileUrl', 'mimeType'],
         },
     },
     {
-        resource: require('../../models/Classes'),
+        resource: Classes,
         options: {
             parent: {
                 name: 'Classes Database',
@@ -63,7 +68,7 @@ const adminBro = new AdminBro({
         },
     },
     {
-        resource: require('../../models/Application'),
+        resource: Application,
         options: {
             parent: {
                 name: 'Application Database',
@@ -129,4 +134,5 @@ const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
     }
 }); 
 
-module.exports = router;
+// module.exports = router;
+export default router;

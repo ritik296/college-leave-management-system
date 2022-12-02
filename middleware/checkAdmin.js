@@ -22,4 +22,5 @@ async function checkAdmin(req, res, next) {
     }
 }
 
-module.exports = checkAdmin;
+// module.exports = checkAdmin;
+export default checkAdmin;

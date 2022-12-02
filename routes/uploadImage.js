@@ -1,5 +1,6 @@
-const express = require('express');
-const upload = require('../middleware/upload');
+import express from 'express';
+import upload from '../middleware/upload.js';
+
 const router = express.Router();
 
 router.post('/image', upload.single('upload'), async (req, res) => {
@@ -11,4 +12,5 @@ router.post('/image', upload.single('upload'), async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

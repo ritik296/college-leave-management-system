@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 async function getCookieForId(req, res, next) {
     const token = req.cookies['auth-token'];
@@ -15,4 +15,5 @@ async function getCookieForId(req, res, next) {
     }
 }
 
-module.exports = getCookieForId;
+// module.exports = getCookieForId;
+export default getCookieForId;

@@ -1,13 +1,14 @@
-const express = require('express');
+import express from 'express';
+import User from "../models/Student.js";
+import Application from "../models/Application.js";
+import Classes from "../models/Classes.js";
+import { body, validationResult} from 'express-validator';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import fetchuser from '../middleware/fetchuser.js';
+import checkAdmin from '../middleware/checkAdmin.js';
+
 const router = express.Router();
-const User = require("../models/Student");
-const Application = require("../models/Application");
-const Classes = require("../models/Classes");
-const { body, validationResult} = require('express-validator');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const fetchuser = require('../middleware/fetchuser');
-const checkAdmin = require('../middleware/checkAdmin');
 
 router.post('/add_class', [
     body('branch', "Enter branch").exists(),
@@ -39,4 +40,5 @@ router.post('/add_class', [
 
 
 
-module.exports = router;
+// module.exports = router;
+export default router;

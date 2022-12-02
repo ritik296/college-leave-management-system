@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const OtpSchema = new Schema({
@@ -9,6 +9,7 @@ const OtpSchema = new Schema({
 
 OtpSchema.index({sendedAt: 1}, {expireAfterSeconds: 60*10});
 
-module.exports = mongoose.model('otp', OtpSchema);
+// module.exports = mongoose.model('otp', OtpSchema);
+export default mongoose.model('otp', OtpSchema);
 
 // , default: `${(new Date()).getFullYear}-${parseInt((new Date()).getFullYear)%1000}`

@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 async function fetchuser(req, res, next) {
     const token = req.header('auth-token');
@@ -15,4 +15,5 @@ async function fetchuser(req, res, next) {
     }
 }
 
-module.exports = fetchuser;
+// module.exports = fetchuser;
+export default fetchuser;

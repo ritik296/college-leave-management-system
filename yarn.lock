@@ -69,6 +69,13 @@
     styled-system "^5.1.5"
     text-mask-addons "^3.8.0"
 
+"@adminjs/express@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@adminjs/express/-/express-5.0.1.tgz#bacb822d2fd57ac82b29ad821a200f9bc08231c6"
+  integrity sha512-C/5sCizoUN7OvVVANj7hegHJM8vHHfzbcKkCMdbXj8kqdISP4gyTgGFsBXADQTHscLMtn3/MdXv9XfS6iaBU0A==
+  dependencies:
+    path-to-regexp "^6.2.0"
+
 "@adminjs/import-export@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@adminjs/import-export/-/import-export-2.0.2.tgz#6b23e2488d2d05c689c533e820b9ceb83887d654"
@@ -87,6 +94,15 @@
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@adminjs/mongoose/-/mongoose-2.0.4.tgz#3e5e14011fa56a39c452f399b789837f1b56737d"
   integrity sha512-LQriAMfufQyjUAy4Dp4AVxvGn0Rn4VPPuMfhJyUqmjei1oShyhCr0kfyEROFudPIfJgMHsxJX6DCFhDzXKrvBg==
+  dependencies:
+    escape-regexp "0.0.1"
+    flat "^4.1.0"
+    lodash "^4.17.21"
+
+"@adminjs/mongoose@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@adminjs/mongoose/-/mongoose-3.0.1.tgz#50a68cd430e6322cd28a6ed2b8719a453bbb69ec"
+  integrity sha512-HX30VuHhE3KH2xL/E9XPe6ohExjfy9GecIMmP7OygUt1dRBJY2u/hRzZ09bf8HsOCRrR5yA8AbuxPBi1hGiQ1A==
   dependencies:
     escape-regexp "0.0.1"
     flat "^4.1.0"
@@ -7171,6 +7187,11 @@ path-to-regexp@^1.7.0:
   integrity sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA==
   dependencies:
     isarray "0.0.1"
+
+path-to-regexp@^6.2.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
+  integrity sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==
 
 path-type@^4.0.0:
   version "4.0.0"

@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const User = require("../models/Student");
-const Classes = require("../models/Classes");
-const Application = require("../models/Application");
-const { body, validationResult} = require('express-validator');
-const fetchuser = require('../middleware/fetchuser');
-const upload = require('../middleware/upload');
+import express from 'express';
+import User from "../models/Student.js";
+import Classes from "../models/Classes.js";
+import Application from "../models/Application.js";
+import { body, validationResult} from 'express-validator';
+import fetchuser from '../middleware/fetchuser.js';
+import upload from '../middleware/upload.js';
 
+const router = express.Router();
 const middlewares = {
     fetchuser: fetchuser,
     upload: upload
@@ -172,4 +172,5 @@ router.get('/get_notifications', fetchuser, async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const applicationSchema = new Schema({
@@ -41,6 +41,7 @@ const applicationSchema = new Schema({
   informerId: [{teacherId: {type: String, required: true}}]
 }, {timestamps: true});
 
-module.exports = mongoose.model('application', applicationSchema);
+// module.exports = mongoose.model('application', applicationSchema);
+export default mongoose.model('application', applicationSchema);
 
 // , default: `${(new Date()).getFullYear}-${parseInt((new Date()).getFullYear)%1000}`

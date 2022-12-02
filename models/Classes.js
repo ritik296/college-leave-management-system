@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const classesSchema = new Schema({
@@ -9,6 +9,7 @@ const classesSchema = new Schema({
   teachers: [{teacherId: {type: String, required: true}, subjectName: {type: String, required: true}, subjectCode: {type: String, required: true}}]
 }, {timestamps: true});
 
-module.exports = mongoose.model('classes', classesSchema);
+// module.exports = mongoose.model('classes', classesSchema);
+export default mongoose.model('classes', classesSchema);
 
 // , default: `${(new Date()).getFullYear}-${parseInt((new Date()).getFullYear)%1000}`

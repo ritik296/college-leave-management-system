@@ -1,8 +1,9 @@
-const express = require('express');
-const fetchuser = require('../middleware/fetchuser');
+import express from 'express';
+import fetchuser from '../middleware/fetchuser.js';
+import getCookieForId from '../middleware/getCookieForId.js';
+import User from "../models/Student.js";
+
 const router = express.Router();
-const getCookieForId = require('../middleware/getCookieForId');
-const User = require("../models/Student");
 
 router.get('/sign-in', async (req, res) => {
     try {
@@ -80,4 +81,5 @@ router.get('*', async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

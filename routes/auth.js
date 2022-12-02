@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const User = require("../models/Student");
-const { body, validationResult} = require('express-validator');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const fetchuser = require('../middleware/fetchuser');
-const checkAdmin = require('../middleware/checkAdmin');
+import User from "../models/Student.js";
+import { body, validationResult} from 'express-validator';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import fetchuser from '../middleware/fetchuser.js';
+import checkAdmin from '../middleware/checkAdmin.js';
 
 // endpoint for login account
 router.post("/login", [
@@ -86,4 +86,5 @@ router.put('/change_pass', fetchuser, async (req, res) => {
     }
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;

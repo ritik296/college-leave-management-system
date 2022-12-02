@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 async function getAdminCookie(req, res, next) {
     const token = req.cookies['admin-token'];
@@ -23,4 +23,5 @@ async function getAdminCookie(req, res, next) {
     }
 }
 
-module.exports = getAdminCookie;
+// module.exports = getAdminCookie;
+export default getAdminCookie;
