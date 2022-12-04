@@ -51,11 +51,6 @@ async function sendApplication() {
     data.append('leave', !applicationleaveDays.value ? 1 : applicationleaveDays.value);
     data.append('from', leaveFrom.value);
     data.append('to', `${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
-
-    console.log(leaveFrom.value);
-    console.log(`${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
-    // data.append('file', file.files[0], {filename: file.originalname});
-    // console.log(data.file);
     
     if(applicationBody.getData().length < 25){ 
         updateMessage.classList.remove('hidden');
@@ -96,6 +91,11 @@ async function sendApplication() {
     }
     if(res.status == 500){
         alert('Internal server error');
+        closeSpinner();
+    }
+    if(res.status == 201){
+        let resData = await res.json();
+        alert(resData.message);
         closeSpinner();
     }
 }
