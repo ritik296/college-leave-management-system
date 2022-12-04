@@ -1,0 +1,3 @@
+name,contact,userId,password,dob,role,semester,branch,section,batch
+test1,1111111111,0863ad201099,12345678,12-03-2002,student,1,cs,A,2022-26
+test2,1111111111,0863ad201098,12345678,12-03-2002,student,1,cs,A,2022-26

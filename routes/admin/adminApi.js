@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import checkAdmin from '../../middleware/checkAdmin.js';
 import { body, validationResult} from 'express-validator';
+import upload from '../../middleware/upload.js';
+import CSV from 'csvtojson';
 
 const router = express.Router();
 
@@ -123,5 +125,46 @@ router.put('/update', checkAdmin, async (req, res) => {
     res.status(200).json({"message": "Detail updated successfully"});
 });
 
+router.post("/add-multiple-users", [checkAdmin, upload.single('file')], async (req, res) => {
+    try {
+        // console.log(req.file.path);
+        if(!req.file){
+            return res.status(404).json({'error': "got no file"});
+        }
+        CSV()
+        .fromFile('./'+req.file.path)
+        .then(async (data) => {
+            // console.log(data)
+            let error = [];
+            let errorLog = [];
+            for(let ele of data){
+               let user = await User.findOne({userId: ele.userId});
+                if (user) {
+                    error.push(ele.userId);
+                    continue;
+                } 
+
+                try {
+                    user = await User(ele);
+                    user.save()
+                } catch (err) {
+                    console.log(err.message);
+                    errorLog.push(err);
+                }
+            }
+            // console.log(error)
+            // console.log(errorLog)
+            res.status(200).json({"message": "Accounts created successfully.", error: {msg: "users already exist.", list: error, log: errorLog}});
+
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(300).send("Unable to open file.");
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Internal error occured");
+    }
+});
 // module.exports = router;
 export default router;

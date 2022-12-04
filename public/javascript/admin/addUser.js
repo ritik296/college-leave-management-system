@@ -8,6 +8,9 @@ const branch = document.getElementById('branch');
 const section = document.getElementById('section');
 const role = document.getElementById('role');
 const update = document.getElementById('error');
+const attachedFileName = document.getElementById('attached-file-name');
+const file = document.getElementById('file');
+const addMultipleContainer = document.getElementById('add-multiple-container');
 
 const semesterContainer = document.getElementById('semester-container');
 const batchContainer = document.getElementById('batch-container');
@@ -63,7 +66,7 @@ async function createAccount(){
     if(res.status == 401) {
         alert("Login with correct credentails.");
         sessionStorage.clear();
-        document.cookie = 'auth-token=';
+        document.cookie = 'admin-token=';
         window.open('/admin-dashboard/login', '_self');
     }
     else if(res.status == 200){
@@ -98,4 +101,65 @@ function changeRole(){
         branchContainer.classList.add('hidden');
         sectionContainer.classList.add('hidden');
     }
+}
+
+function onAttachFile() {
+    attachedFileName.innerHTML = `<p><span class="font-bold">Attached file: - </span>${file.files.item(0).name}</p>`;
+}
+
+function toggleAddMultiple(){
+    // console.log("first")
+    if(addMultipleContainer.classList.contains('hidden')){
+        addMultipleContainer.classList.remove('hidden');
+    } else {
+        addMultipleContainer.classList.add('hidden');
+    }
+}
+
+async function addMultipleUsers(){
+    openSpinner()
+    if(file.files.length == 0){
+        alert('No file attached.')
+        closeSpinner();
+        return;
+    }
+    var data = new FormData();
+    data.append('file', file.files[0]);
+    let res = await fetch('/api/admin/add-multiple-users', {
+        method: 'POST',
+        body: data,
+        headers: {
+            // 'Content-type': 'multipart/form-data; charset=UTF-8',
+            "admin-token": `${sessionStorage.getItem('admin-token')}`
+        }
+    });
+    if(res.status == 401) {
+        alert("Login with correct credentails.");
+        sessionStorage.clear();
+        document.cookie = 'admin-token=';
+        window.open('/admin-dashboard/login', '_self');
+    }
+    else if(res.status == 200){
+        let message = '';
+        let resData = await res.json();
+        update.classList.remove('text-red-500');
+        update.classList.add('text-green-500');
+        message += resData['message'] + '\n';
+        message += "List of student already have account: -\n"
+        for(let ele of resData.error.list){
+            message += ele + '\n';
+        }
+        update.innerText = message;
+        addMultipleContainer.classList.add('hidden');
+        file.files[0] = null;
+    }
+    else if(res.status == 400){
+        let resData = await res.json();
+        update.classList.remove('text-green-500');
+        update.classList.add('text-red-500');
+        update.innerText = resData['error'];
+        console.log(resData['error']);
+    }
+    closeSpinner();
+    console.log(res.status)
 }

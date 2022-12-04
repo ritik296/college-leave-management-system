@@ -1,9 +1,32 @@
 extends base.pug
 
 block content 
-    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8 ">
         <h1 class="text-center text-3xl font-bold text-[#263238]">Add User</h1>
 
+        <div class="container mx-auto items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <div class="ml-auto relative">
+                <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-purple-200" onclick="toggleAddMultiple()">Add Multiple<img class="w-4 h-4 ml-2 rotate-0" src="../../../../../static/plus.svg" alt=""></button>
+                <div id="add-multiple-container" class="absolute right-0 z-10 mt-1 w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <div class="py-4 px-2" role="none">
+                        <div class="flex items-center justify-center w-full mt-3">
+                            <label for="file" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg aria-hidden="true" class="w-10 h-10 mb-1 text-[#263238]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                    <p class="mb-2 text-xs text-[#263238] dark:text-[#536770]"><span class="font-semibold">Click to upload file</span></p>
+                                    <p id="attached-file-name" class="text-xs text-[#263238] dark:text-[#536770]">CSV (Limit 25MB)</p>
+                                </div>
+                                <input id="file" type="file" class="hidden" onchange="onAttachFile()" />
+                            </label>
+                        </div> 
+                        <div class="flex justify-center mt-2">
+                            <button class="inline-flex items-center mx-4 bg-cyan-300 border-2 border-cyan-300 py-2 px-4 shadow-md focus:outline-none hover:bg-white rounded-md text-white hover:text-sky-400 font-bold text-base md:mt-0" onclick="addMultipleUsers()">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
             <div class="lg:w-96 sm:w-96 w-full  mx-auto mt-4">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">* Full Name</label>
@@ -81,4 +104,4 @@ block content
         </div>  
     </div>
 
-    script(src="../../javascript/admin/addUser.js")
+    script(src="../../../../../javascript/admin/addUser.js")

@@ -43,7 +43,7 @@ async function sendApplication() {
         closeSpinner();
         return;
     }
-    let to = d = new Date((new Date(leaveFrom.value)).getTime() + !applicationleaveDays.value ? 24*60*60*1000 : applicationleaveDays.value*24*60*60*1000 );
+    let to = d = new Date((new Date(leaveFrom.value)).getTime() + 24*60*60*1000*(!applicationleaveDays.value ? 1 : applicationleaveDays.value));
     var data = new FormData();
     data.append('file', file.files[0]);
     data.append('subject', applicationSubject.value);
@@ -52,6 +52,8 @@ async function sendApplication() {
     data.append('from', leaveFrom.value);
     data.append('to', `${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
 
+    console.log(leaveFrom.value);
+    console.log(`${to.getFullYear()}-${to.getMonth() + 1}-${to.getDate()}`)
     // data.append('file', file.files[0], {filename: file.originalname});
     // console.log(data.file);
     
@@ -91,6 +93,10 @@ async function sendApplication() {
         document.cookie = 'auth-token=';
         closeSpinner();
         window.open('/sign-in', '_self');
+    }
+    if(res.status == 500){
+        alert('Internal server error');
+        closeSpinner();
     }
 }
 

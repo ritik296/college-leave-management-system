@@ -26,45 +26,73 @@ mixin tableRow({name, id, contact, dob, role, userId, branch, semester})
     </tr>
 
 block content 
+
+    <div id="filter" class="min-h-screen w-[24rem] z-50 fixed top-0 right-0 bg-cyan-400 rounded-l-xl transition-all translate-x-96 ease-in-out duration-[400ms]">
+        <div id="filter-container" class="py-8 pl-8 pr-5 flex flex-wrap flex-col">
+            <button id="close-filter-btn" class="p-2 border-[3px] border-white bg-cyan-400 rounded-full absolute top-6 right-6 hover:shadow-md ">
+                <img class="w-5 h-5 mx-0 text-white" src="../../../../static/x.svg"/>
+            </button>
+
+            <h1 class="text-white font-bold text-3xl text-center mt-10 mb-5">Filter Records</h1>
+
+            <label for="name" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Name</label>
+            <input type="text" id="name" placeholder="Name" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+            <label for="contact" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Contact</label>
+            <input type="text" id="contact" placeholder="Contact" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+            <label for="user-id" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">User ID</label>
+            <input type="text" id="user-id" placeholder="User ID" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+            <label for="role" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Role</label>
+            <select id="role" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+                <option disabled selected value="" class="hidden">Select</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="hod">Head of Department</option>
+            </select>
+            <label for="branch" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Branch</label>
+            <select id="branch" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+                <option disabled selected value="" class="hidden">Select</option>
+                <option value="AIDS">AIDS</option>
+                <option value="CS">CS</option>
+                <option value="EC">EC</option>
+                <option value="ME">ME</option>
+            </select>
+            <label for="semester" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Semester</label>
+            <select id="semester" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+                <option disabled selected value="" class="hidden">Select</option>
+                <option value="1">1<sup>st</sup></option>
+                <option value="2">2<sup>nd</sup></option>
+                <option value="3">3<sup>rd</sup></option>
+                <option value="4">4<sup>th</sup></option>
+                <option value="5">5<sup>th</sup></option>
+                <option value="6">6<sup>th</sup></option>
+                <option value="7">7<sup>th</sup></option>
+                <option value="8">8<sup>th</sup></option>
+            </select>
+            <label for="section" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Section</label>
+            <select id="section" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+                <option disabled selected value="" class="hidden">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <div class="flex justify-center mt-8">
+                <button class="inline-flex items-center mx-4 bg-cyan-300 border-2 border-cyan-300 py-2 px-4 shadow-md focus:outline-none hover:bg-white rounded-md text-white hover:text-sky-400 font-bold text-base md:mt-0" onclick="filterRecord()">Filter</button>
+            </div>
+        </div>
+    </div>
+
     <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
         <h1 class="text-center text-3xl font-bold text-[#263238]">User Database</h1>
 
-        <!-- <div id="class-detail-container" class="mt-5 flex flex-wrap flex-row justify-center lg:space-x-4">
-            <div class="lg:w-48 sm:w-2/5 w-full sm:mr-4">
-                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an Branch</label>
-                <select id="branch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected value="AIDS">AIDS</option>
-                    <option value="CS">CS</option>
-                    <option value="EC">EC</option>
-                    <option value="ME">ME</option>
-                </select>
-            </div>
-            <div class="lg:w-48 sm:w-2/5 w-full">
-                <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an Semester</label>
-                <select id="semester" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected value="1">1<sup>st</sup></option>
-                    <option value="2">2<sup>nd</sup></option>
-                    <option value="3">3<sup>rd</sup></option>
-                    <option value="4">4<sup>th</sup></option>
-                    <option value="5">5<sup>th</sup></option>
-                    <option value="6">6<sup>th</sup></option>
-                    <option value="7">7<sup>th</sup></option>
-                    <option value="8">8<sup>th</sup></option>
-                </select>
-            </div>
-            <div class="lg:w-48 sm:w-2/5 w-full sm:mr-4">
-                <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an Section</label>
-                <select id="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                </select>
-            </div>
-            <div class="lg:w-48 sm:w-2/5 w-full">
-                <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="getStudentList()">Get Student List</button>
-            </div>
-        </div>   -->
+        <div class="container mx-auto flex flex-wrap items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <div class="font-bold text-xl">List</div>
+            <span class=" bg-cyan-400 font-bold text-xl text-white ml-4 px-2 rounded-full ">15</span>
+            <a class="ml-auto" href="/admin-dashboard/resources/user/action/new">
+                <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Add <img class="w-4 h-4 ml-2" src="../../../static/plus.svg" alt=""></button>
+            </a>
+            <button id="open-filter-btn" class="ml-4 shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Filter <img class="w-4 h-4 ml-2" src="../../../static/filter.svg" alt=""></button>
+        </div>
 
         <div id="student-container" class="">
             <div class=" relative shadow-md sm:rounded-lg mt-7">
@@ -95,7 +123,7 @@ block content
         <div class="flex items-center justify-between bg-white px-4 py-3 sm:px-6 mt-4"> 
             <div class="hidden sm:flex sm:flex-1 sm:items-center justify-center">
                 <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                    <a href="/admin-dashboard/resources/user?page=#{page-1}" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                    <a href="/admin-dashboard/resources/user#{query}page=#{page-1}" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
                         <span class="sr-only">Previous</span>
                         <!-- Heroicon name: mini/chevron-left -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -103,7 +131,7 @@ block content
                         </svg>
                     </a>
                     <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">#{page}</a>
-                    <a href="/admin-dashboard/resources/user?page=#{page+1}" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                    <a href="/admin-dashboard/resources/user#{query}page=#{page+1}" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
                         <span class="sr-only">Next</span>
                         <!-- Heroicon name: mini/chevron-right -->
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
