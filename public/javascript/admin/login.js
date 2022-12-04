@@ -28,7 +28,7 @@ async function login(){
         sessionStorage.setItem('admin-token', resData['admin-token']);
         document.cookie = `admin-token=${resData['admin-token']}`;
         setTimeout(() => {
-            window.open('/admin-dashboard', '_self');
+            window.open('/admin-dashboard/resources/user', '_self');
         }, 500);
     }
 }

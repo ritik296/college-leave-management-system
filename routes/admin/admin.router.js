@@ -3,7 +3,7 @@ import AdminBroExpress from 'admin-bro-expressjs';
 import AdminBroMongoose from 'admin-bro-mongoose';
 import bcrypt from 'bcryptjs';
 // const importExportFeature = require('@adminjs/import-export');
-import importExportFeature from '@adminjs/import-export';
+// import importExportFeature from '@adminjs/import-export';
 // console.log(importExportFeature.default())
 import mongoose from 'mongoose';
 
@@ -41,7 +41,7 @@ const adminBro = new AdminBro({
                     },
                 }
             },
-            features: [importExportFeature.default()]
+            // features: [importExportFeature()]
             // listProperties: ['fileUrl', 'mimeType'],
         },
     },

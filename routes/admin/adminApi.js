@@ -96,5 +96,32 @@ router.put('/forget_pass', checkAdmin, async (req, res) => {
     res.status(200).json({"message": "Password updated successfully"});
 });
 
+router.put('/update', checkAdmin, async (req, res) => {
+    const {id, name, contact, dob, password, role, userId, branch, semester, section, batch, course} = req.body;
+    let user = await User.findOne({'_id': id});
+
+    if (user.userId !== userId) {
+        let anotheruser = await User.findOne({userId: userId});
+        if(anotheruser){ 
+            return res.status(400).json({"error": "User ID already assign to other user"});
+        }
+    }
+
+    user.name = name;
+    user.contact = contact;
+    user.dob = dob;
+    user.password = password;
+    user.role = role;
+    user.userId = userId;
+    user.branch = branch;
+    user.semester = semester;
+    user.section = section;
+    user.batch = batch;
+    user.course = course;
+
+    user.save();
+    res.status(200).json({"message": "Detail updated successfully"});
+});
+
 // module.exports = router;
 export default router;

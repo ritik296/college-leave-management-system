@@ -1,0 +1,72 @@
+extends base.pug
+
+block content 
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Detail of #{user.name}</h1>
+
+        <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full Name</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.name}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.id}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.contact}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="user-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Id</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.userId}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <p placeholder="12345678" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.password}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.dob}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.role}</p>
+            </div>
+            <div id="semester-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.semester}</p>
+            </div>
+            <div id="branch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.branch}</p>
+            </div>
+            <div id="section-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.section}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batch</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.batch}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.course}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Created At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.createdAt}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Updated At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.updatedAt}</p>
+            </div>
+            //- <div class="lg:w-[40rem] sm:w-[40rem] w-full mx-auto mt-4">
+            //-     <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="createAccount()">Get Student List</button>
+            //- </div>
+
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+        </div>  
+    </div>

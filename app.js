@@ -38,6 +38,10 @@ app.use('/api/v1/otp', otp);
 app.use('/api/admin/', adminApi);
 app.use('/upload', upload);
 
+import admin from './routes/admin/admin.js';
+
+app.use('/admin-dashboard', admin);
+
 import adminRouter from './routes/admin/admin.router.js';
 
 app.use('/admin', adminRouter);

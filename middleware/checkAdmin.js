@@ -1,6 +1,6 @@
+import jwt from 'jsonwebtoken';
 async function checkAdmin(req, res, next) {
     const token = req.header('admin-token');
-    const jwt = require('jsonwebtoken');
     // console.log(token);
     if(!token) {
         return res.status(401).send({error: "Please authencate using a valid token"});
