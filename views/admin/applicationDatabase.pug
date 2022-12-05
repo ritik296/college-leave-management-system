@@ -1,0 +1,118 @@
+extends base.pug
+
+mixin tableRow({id, coordinatorId, subject, reason, leave, from, to, status})
+    <tr id="student-attendance-container" class="${lastAbsents > 2 ? 'bg-red-100' : 'bg-white'} border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white" onclick="showApplicationDetail('#{id}')">#{id}</th>
+        <td class="py-4 px-6" onclick="showApplicationDetail('#{id}')">#{coordinatorId}</td>
+        <td class="py-4 px-6">#{subject}</td>
+        //- <td class="py-4 px-6">#{reason}</td>
+        <td class="py-4 px-6">#{leave}</td>
+        <td class="py-4 px-6">#{from}</td>
+        <td class="py-4 px-6">#{to}</td>
+        <td class="py-4 px-6">#{status}</td>
+        <td class="py-4 px-6">
+            <div id="#{id}btn" class="border-2 mx-auto w-6 h-6 p-1" onclick="toggleOption('#{id}')">
+                <img class="" src="../../../static/more.svg" alt="">
+            </div>
+            <div id="#{id}option" class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                <div class="py-2" role="none">
+                    <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                    <a href="/admin-dashboard/resources/application/records/#{id}/show" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-0">Show</a>
+                    //- <a href="/admin-dashboard/resources/application/records/#{id}/edit" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
+                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
+                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-red-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-red-500" role="menuitem" tabindex="-1" id="menu-item-2">Delete</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+
+block content 
+
+    <div id="filter" class="min-h-screen w-[24rem] z-50 fixed top-0 right-0 bg-cyan-400 rounded-l-xl transition-all translate-x-96 ease-in-out duration-[400ms]">
+        <div id="filter-container" class="py-8 pl-8 pr-5 flex flex-wrap flex-col">
+            <button id="close-filter-btn" class="p-2 border-[3px] border-white bg-cyan-400 rounded-full absolute top-6 right-6 hover:shadow-md ">
+                <img class="w-5 h-5 mx-0 text-white" src="../../../../static/x.svg"/>
+            </button>
+
+            <h1 class="text-white font-bold text-3xl text-center mt-10 mb-5">Filter Records</h1>
+
+            <label for="subject" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Subject</label>
+            <input type="text" id="subject" placeholder="Subject" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+            <label for="leave" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Leave Days</label>
+            <input type="number" id="leave" placeholder="Leave Days" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+
+            <label for="status" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Status</label>
+            <select id="status" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
+                <option disabled selected value="" class="hidden">Select</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approve</option>
+                <option value="rejected">Rejected</option>
+            </select>
+
+            <div class="flex justify-center mt-8">
+                <button class="inline-flex items-center mx-4 bg-cyan-300 border-2 border-cyan-300 py-2 px-4 shadow-md focus:outline-none hover:bg-white rounded-md text-white hover:text-sky-400 font-bold text-base md:mt-0" onclick="filterRecord()">Filter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Application Database</h1>
+
+        <div class="container mx-auto flex flex-wrap items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <div class="font-bold text-xl">List</div>
+            <span class=" bg-cyan-400 font-bold text-xl text-white ml-4 px-2 rounded-full ">10</span>
+            <button id="open-filter-btn" class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Filter <img class="w-4 h-4 ml-2" src="../../../static/filter.svg" alt=""></button>
+        </div>
+
+        <div id="student-container" class="">
+            <div class=" relative shadow-md sm:rounded-lg mt-7">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">Id</th>
+                            <th scope="col" class="py-3 px-6">Coordinator ID</th>
+                            <th scope="col" class="py-3 px-6">Subject</th>
+                            //- <th scope="col" class="py-3 px-6">Reason</th>
+                            <th scope="col" class="py-3 px-6 w-32">Leave Days</th>
+                            <th scope="col" class="py-3 px-6">From</th>
+                            <th scope="col" class="py-3 px-6">To</th>
+                            <th scope="col" class="py-3 px-6">Status</th>
+                            <th scope="col" class="py-3 px-6 w-20"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-attendance-container" >
+                        <!-- container to populate student list  -->
+                        each application in applications 
+                            + tableRow(application)
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between bg-white px-4 py-3 sm:px-6 mt-4"> 
+            <div class="hidden sm:flex sm:flex-1 sm:items-center justify-center">
+                <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                    <a href="/admin-dashboard/resources/application#{query}page=#{page-1}" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                        <span class="sr-only">Previous</span>
+                        <!-- Heroicon name: mini/chevron-left -->
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-current="page" class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">#{page}</a>
+                    <a href="/admin-dashboard/resources/application#{query}page=#{page+1}" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+                        <span class="sr-only">Next</span>
+                        <!-- Heroicon name: mini/chevron-right -->
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+    script(src="../../../../../javascript/admin/application/applicationDatabase.js")

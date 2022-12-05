@@ -22,7 +22,7 @@ router.get('/', getAdminCookie, async (req, res) => {
         
         res.status(200).render('admin/userDatabase', {users: users, currentPage: 'userDatabase', page: parseInt(p), query: strQuery});
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send('<h1>Internal Server Error</h1>');
     }
 });
@@ -31,11 +31,14 @@ router.get('/records/:id/show', getAdminCookie, async (req, res) => {
     try {
         const {id} = req.params;
         const user = await User.findOne({'_id': id});
+        if(!user){
+            return res.status(404).render('error');
+        }
         // console.log(user);
         res.status(200).render('admin/userShow', {user: user, currentPage: 'userDatabase'});
     } catch (error) {
-        console.log(error);
-        res.status(500).send('<h1>Internal Server Error</h1>');
+        console.log(error.message);
+        res.status(404).render('error.pug');
     }
 });
 
@@ -43,11 +46,14 @@ router.get('/records/:id/edit', getAdminCookie, async (req, res) => {
     try {
         const {id} = req.params;
         const user = await User.findOne({'_id': id});
+        if(!user){
+            return res.status(404).render('error');
+        }
         // console.log(user);
         res.status(200).render('admin/userEdit', {user: user, currentPage: 'userDatabase'});
     } catch (error) {
-        console.log(error);
-        res.status(500).send('<h1>Internal Server Error</h1>');
+        console.log(error.message);
+        res.status(404).render('error.pug');
     }
 });
 
@@ -55,7 +61,7 @@ router.get('/action/new', getAdminCookie, async (req, res) => {
     try {
         res.status(200).render('admin/addUser', {currentPage: 'addUser'});
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         res.status(500).send('<h1>Internal Server Error</h1>');
     }
 });

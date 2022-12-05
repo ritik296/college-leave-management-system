@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import getAdminCookie from '../../middleware/getAdminCookie.js';
 import user from './user.js';
+import application from './application.js';
 
 router.get('/', getAdminCookie, async (req, res) => {
     try {
@@ -31,6 +32,7 @@ router.get('/login', async (req, res) => {
 });
 
 router.use('/resources/user', user);
+router.use('/resources/application', application);
 
 // module.exports = router;
 export default router;

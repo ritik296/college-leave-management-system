@@ -1,0 +1,79 @@
+extends base.pug
+
+block content 
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Detail of Application #{application.id}</h1>
+
+        <div class="container mx-auto flex flex-wrap items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <!-- <a class="ml-auto" href="/admin-dashboard/resources/application/records/#{application.id}/edit"> -->
+            <a class="ml-auto" href="#">
+                <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Edit <img class="w-4 h-4 ml-2" src="../../../../../static/edit.svg" alt=""></button>
+            </a>
+        </div>
+
+        <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Id</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.id}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sender Id</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.senderId}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coordinator Id</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.coordinatorId}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="user-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.subject}</p>
+            </div>
+            <div class="w-full mx-12  mx-auto mt-4">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reason</label>
+                <div placeholder="12345678" rows="7" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.reason}</div>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Leave Days</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.leave}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">From</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.from}</p>
+            </div>
+            <div id="semester-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">To</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.to}</p>
+            </div>
+            <div id="branch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.status}</p>
+            </div>
+            //- <div id="section-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+            //-     <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
+            //-     <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.section}</p>
+            //- </div>
+            //- <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+            //-     <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batch</label>
+            //-     <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.batch}</p>
+            //- </div>
+            //- <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+            //-     <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Course</label>
+            //-     <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{user.course}</p>
+            //- </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Created At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.createdAt}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Updated At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{application.updatedAt}</p>
+            </div>
+            //- <div class="lg:w-[40rem] sm:w-[40rem] w-full mx-auto mt-4">
+            //-     <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="createAccount()">Get Student List</button>
+            //- </div>
+
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+        </div>  
+    </div>
