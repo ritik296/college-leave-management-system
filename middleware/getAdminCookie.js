@@ -9,10 +9,10 @@ async function getAdminCookie(req, res, next) {
     try {
         const data = jwt.verify(token, process.env.ADMIN_SECRET);
 
-        if(Date.now() > data.access.valid){
-            // console.log("expired");
-            return res.status(401).render('admin/login');
-        }
+        // if(Date.now() > data.access.valid){
+        //     // console.log("expired");
+        //     return res.status(401).render('admin/login');
+        // }
         // console.log(process.env.ADMIN_SECRET ," ", data.access.key);
         if(process.env.ADMIN_KEY !== data.access.key){
             return res.status(401).render('admin/login');
