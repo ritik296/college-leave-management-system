@@ -1,8 +1,20 @@
 const username = document.getElementById('username');
 const password = document.getElementById('password');
 const update = document.getElementById('error');
+const spinner = document.getElementById('progress-spinner');
+
+function openSpinner(){
+    spinner.classList.remove('-translate-y-20');
+    spinner.classList.add('translate-y-0');
+}
+
+function closeSpinner(){
+    spinner.classList.remove('translate-y-0');
+    spinner.classList.add('-translate-y-20');
+}
 
 async function login(){
+    openSpinner();
     let res = await fetch('/api/admin/admin-login', {
         method: 'POST',
         body: JSON.stringify({
@@ -30,4 +42,5 @@ async function login(){
             window.open('/admin-dashboard/resources/user', '_self');
         }, 500);
     }
+    closeSpinner();
 }
