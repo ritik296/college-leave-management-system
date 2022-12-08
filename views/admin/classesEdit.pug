@@ -1,0 +1,96 @@
+extends base.pug
+
+mixin tableRow({teacherId, subjectName, subjectCode}, count)
+    <tr id="table-row-#{count}" class="bg-white dark:bg-gray-800 dark:border-gray-700 border-b">
+        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <input id="teacher-id-#{count}" class="teacher-id w-full border-none focus:outline-none" value="#{teacherId}" type="text" id="teacher-id-" placeholder="Enter Teacher ID">
+        </th>
+        <td class="py-4 px-6">
+            <input id="subject-name-#{count}" class="subject-name w-full border-none focus:outline-none" value="#{subjectName}" type="text" id="subject-name-" placeholder="Enter Subject Name">
+        </td>
+        <td class="py-4 px-6">
+            <input id="subject-code-#{count}" class="subject-code w-full border-none focus:outline-none" value="#{subjectCode}" type="text" id="subject-code-" placeholder="Enter Subject Code">
+        </td>
+        <td class="py-4 px-6">
+            <button class="p-1 rounded-full bg-red-500 px-2 text-white font-bold" onclick="removeRow('#{count}')">Remove</button>
+        </td>
+    </tr>
+
+block content 
+    -var count = 0
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Edit #{classes.id} Details</h1>
+
+        <div class="container mx-auto flex flex-wrap items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <a class="ml-auto" href="/admin-dashboard/resources/classes/records/#{classes.id}/show">
+                <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Show <img class="w-4 h-4 ml-2" src="../../../../../static/show.svg" alt=""></button>
+            </a>
+        </div>
+
+        <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
+            <div class="w-full sm:mx-12 mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.id}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="branch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
+                <input id="branch" value="#{classes.branch}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester</label>
+                <input id="semester" value="#{classes.semester}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="classes-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
+                <input id="section" value="#{classes.section}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="coordinator-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coordinator ID</label>
+                <input placeholder="Enter coordinator id" id="coordinator-id" value="#{classes.coordinatorId}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+
+            <div class="w-full sm:mx-12 mt-4 border mt-6 rounded-lg overflow-hidden">          
+                <div class="overflow-x-auto relative">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">Teacher ID</th>
+                                <th scope="col" class="py-3 px-6">Subject Name</th>
+                                <th scope="col" class="py-3 px-6">Subject Code</th>
+                                <th scope="col" class="py-3 px-6">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-row-container">
+                            each teacher in classes.teachers
+                                +tableRow(teacher, count++)
+                        </tbody>
+                    </table>
+                </div>
+                <div class="w-full">
+                    <button class="p-2 w-full flex justify-center items-center bg-cyan-200" onclick="addTableRow()"><img class="w-5 h-5 mr-2" src="../../../../../../../static/plus.svg" alt=""> Add</button>
+                </div>
+            </div>
+
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Created At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.createdAt}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Updated At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.updatedAt}</p>
+            </div>
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full mx-auto mt-4">
+                <button class="w-full h-10 bg-gradient-to-tr from-blue-600 to-blue-400 mt-7 rounded-xl text-white font-bold text-md" onclick="addClasses()">Update User Details</button>
+            </div>
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+        </div>  
+    </div>
+
+
+    script(src="../../../../../../../../javascript/admin/classes/classesEdit.js")

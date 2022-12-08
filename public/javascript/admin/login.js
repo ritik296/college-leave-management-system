@@ -2,13 +2,6 @@ const username = document.getElementById('username');
 const password = document.getElementById('password');
 const update = document.getElementById('error');
 
-async function clearCookie(){
-    sessionStorage.clear();
-    document.cookie = "admin-token=";
-}
-
-clearCookie();
-
 async function login(){
     let res = await fetch('/api/admin/admin-login', {
         method: 'POST',
@@ -20,7 +13,6 @@ async function login(){
             'Content-type': 'application/json; charset=UTF-8',
         }
     });
-    // console.log(res.status)
 
     if(res.status == 401) {
         update.innerText = "Login with correct credentails.";

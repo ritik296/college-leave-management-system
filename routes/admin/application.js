@@ -37,19 +37,19 @@ router.get('/records/:id/show', getAdminCookie, async (req, res) => {
     }
 });
 
-router.get('/records/:id/edit', getAdminCookie, async (req, res) => {
-    try {
-        const {id} = req.params;
-        const application = await Application.findOne({'_id': id});
-        if(!application){
-            return res.status(404).render('error.pug');
-        }
-        res.status(200).render('admin/applicationEdit', {application: application, currentPage: 'application-database'});
-    } catch (error) {
-        console.log(error.message);
-        res.status(404).render('error.pug');
-    }
-});
+// router.get('/records/:id/edit', getAdminCookie, async (req, res) => {
+//     try {
+//         const {id} = req.params;
+//         const application = await Application.findOne({'_id': id});
+//         if(!application){
+//             return res.status(404).render('error.pug');
+//         }
+//         res.status(200).render('admin/applicationEdit', {application: application, currentPage: 'application-database'});
+//     } catch (error) {
+//         console.log(error.message);
+//         res.status(404).render('error.pug');
+//     }
+// });
 
 // router.get('/action/new', getAdminCookie, async (req, res) => {
 //     try {

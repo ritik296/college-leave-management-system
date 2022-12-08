@@ -32,7 +32,6 @@ sideBarOpenBtn.addEventListener('click', ()=> {
 
 function signOut() {
     sessionStorage.clear();
-    document.cookie = "admin-token=";
     window.open('/admin-dashboard/login', "_self");
 }
 

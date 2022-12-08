@@ -31,7 +31,7 @@ router.post('/add_class', [
             return res.status(404).json({"error": "Invalid coordinator id"});
         }
         classes = await Classes.create(req.body);
-        res.status(200).json({message: "Application sended wait for responce.", "class": classes});
+        res.status(200).json({message: "Class Added", "class": classes});
     } catch (error) {
         console.log(error.message)
         res.status(500).send("Internal server error");

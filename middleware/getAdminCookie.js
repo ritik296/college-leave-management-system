@@ -15,11 +15,11 @@ async function getAdminCookie(req, res, next) {
         // }
         // console.log(process.env.ADMIN_SECRET ," ", data.access.key);
         if(process.env.ADMIN_KEY !== data.access.key){
-            return res.status(401).render('admin/login');
+            return res.status(401).json({"error": "Invalid token"});
         }
         next();
     } catch (error) {
-        res.status(401).render('login');
+        res.status(500).send("Internal Server Error");
     }
 }
 

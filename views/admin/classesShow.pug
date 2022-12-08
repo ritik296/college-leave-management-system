@@ -1,0 +1,73 @@
+extends base.pug
+
+mixin tableRow({teacherId, subjectName, subjectCode})
+    <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 border-b">
+        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">#{teacherId}</th>
+        <td class="py-4 px-6">#{subjectName}</td>
+        <td class="py-4 px-6">#{subjectCode}</td>
+    </tr>
+
+block content 
+    <div class="w-ful h-full bg-white rounded-xl m-4 shadow-md mt-6 p-8">
+        <h1 class="text-center text-3xl font-bold text-[#263238]">Detail of #{classes.id}</h1>
+
+        <div class="container mx-auto flex flex-wrap items-center flex-row w-full mt-4 bg-slate-100 text-gray-800 font-semibold text-center shadow-inner shadow-current rounded-xl p-2 px-4">
+            <a class="ml-auto" href="/admin-dashboard/resources/classes/records/#{classes.id}/edit">
+                <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Edit <img class="w-4 h-4 ml-2" src="../../../../../static/edit.svg" alt=""></button>
+            </a>
+        </div>
+
+        <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
+            <div class="w-full mx-12 mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.id}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Branch</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.branch}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="contact" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.semester}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="classes-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.section}</p>
+            </div>
+            <div class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coordinator ID</label>
+                <p placeholder="12345678" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.coordinatorId}</p>
+            </div>
+
+            <div class="w-full mx-12 mt-4 border mt-6 rounded-lg overflow-hidden">          
+                <div class="overflow-x-auto relative">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="py-3 px-6">Teacher ID</th>
+                                <th scope="col" class="py-3 px-6">Subject Name</th>
+                                <th scope="col" class="py-3 px-6">Subject Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            each teacher in classes.teachers
+                                +tableRow(teacher)
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Created At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.createdAt}</p>
+            </div>
+            <div id="batch-container" class="lg:w-[40rem] sm:w-[40rem] w-full  mx-auto mt-4">
+                <label for="batch" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Updated At</label>
+                <p class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">#{classes.updatedAt}</p>
+            </div>
+            <div class="relative w-full mt-5 min-w-[200px]">
+                <p id="error" class="text-green-600 text-xs"></p>
+            </div>
+        </div>  
+    </div>
