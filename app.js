@@ -42,7 +42,7 @@ import admin from './routes/admin/admin.js';
 
 app.use('/admin-dashboard', admin);
 
-import adminRouter from './routes/admin/admin.router.js';
+// import adminRouter from './routes/admin/admin.router.js';
 
 // app.use('/admin', adminRouter);
 
