@@ -60,4 +60,18 @@ router.get('/records/:id/show', getAdminCookie, async (req, res) => {
 //     }
 // });
 
+router.delete('/records/:id/delete', getAdminCookie, async (req, res) => {
+    try {
+        const {id} = req.params;
+        const application = await Application.findByIdAndDelete({'_id': id});
+        if(!application){
+            return res.status(404).render('error');
+        }
+        res.status(200).json({'message': `Application ${application.id} removed successfully.`});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('<h1>Internal Server Error</h1>');
+    }
+});
+
 export default router;

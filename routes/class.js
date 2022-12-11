@@ -39,6 +39,36 @@ router.post('/add_class', [
 });
 
 
+router.put('/update-classes', checkAdmin, async (req, res) => {
+    try {
+        const {branch, semester, section, teachers, coordinatorId} = req.body;
+
+        let classes = await Classes.findOne({branch: branch, semester: semester, section: section});
+        if(!classes){
+            return res.status(404).send("No such class exist.");
+        }
+
+        if(!(await User.findOne({userId: coordinatorId}))){
+            return res.status(404).json({"error": "Invalid coordinator id"});
+        }
+
+        if(coordinatorId !== classes.coordinatorId){
+            classes.coordinatorId = coordinatorId;
+        }
+
+        if(teachers !== classes.teachers){
+            classes.teachers = teachers;
+        }
+
+        classes.save();
+
+        res.status(200).json({'message': "Class detail updated."});
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Internal server error"); 
+    }
+});
 
 // module.exports = router;
 export default router;

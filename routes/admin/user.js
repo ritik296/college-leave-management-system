@@ -43,6 +43,20 @@ router.get('/action/new', getAdminCookie, async (req, res) => {
     }
 });
 
+router.delete('/records/:id/delete', getAdminCookie, async (req, res) => {
+    try {
+        const {id} = req.params;
+        const user = await User.findByIdAndDelete({'_id': id});
+        if(!user){
+            return res.status(404).render('error');
+        }
+        res.status(200).json({'message': `User ${user.userId} removed successfully.`});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('<h1>Internal Server Error</h1>');
+    }
+});
+
 router.get('/', getAdminCookie, async (req, res) => {
     try {
         const {direction, sortBy, page, name, contact, userId, role, semester, section, branch} = req.query;

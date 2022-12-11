@@ -88,41 +88,52 @@ router.post("/create-account", [
 
 // endpoint for forget password
 router.put('/forget_pass', checkAdmin, async (req, res) => {
-    let user = await User.findOne({userId: req.body.userId});
-
-    if(!user) {
-        return res.status(400).json({error: "Some error occured"});
+    try {
+        
+        let user = await User.findOne({userId: req.body.userId});
+        
+        if(!user) {
+            return res.status(400).json({error: "Some error occured"});
+        }
+        user.password = req.body.password;
+        user.save();
+        res.status(200).json({"message": "Password updated successfully"});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Internal server error");   
     }
-    user.password = req.body.password;
-    user.save();
-    res.status(200).json({"message": "Password updated successfully"});
 });
 
 router.put('/update', checkAdmin, async (req, res) => {
-    const {id, name, contact, dob, password, role, userId, branch, semester, section, batch, course} = req.body;
-    let user = await User.findOne({'_id': id});
+    try{
+        const {id, name, contact, dob, password, role, userId, branch, semester, section, batch, course} = req.body;
+        let user = await User.findOne({'_id': id});
 
-    if (user.userId !== userId) {
-        let anotheruser = await User.findOne({userId: userId});
-        if(anotheruser){ 
-            return res.status(400).json({"error": "User ID already assign to other user"});
+        if (user.userId !== userId) {
+            let anotheruser = await User.findOne({userId: userId});
+            if(anotheruser){ 
+                return res.status(400).json({"error": "User ID already assign to other user"});
+            }
         }
+
+        user.name = name;
+        user.contact = contact;
+        user.dob = dob;
+        user.password = password;
+        user.role = role;
+        user.userId = userId;
+        user.branch = branch;
+        user.semester = semester;
+        user.section = section;
+        user.batch = batch;
+        user.course = course;
+
+        user.save();
+        res.status(200).json({"message": "Detail updated successfully"});
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("Internal server error");   
     }
-
-    user.name = name;
-    user.contact = contact;
-    user.dob = dob;
-    user.password = password;
-    user.role = role;
-    user.userId = userId;
-    user.branch = branch;
-    user.semester = semester;
-    user.section = section;
-    user.batch = batch;
-    user.course = course;
-
-    user.save();
-    res.status(200).json({"message": "Detail updated successfully"});
 });
 
 router.post("/add-multiple-users", [checkAdmin, upload.single('file')], async (req, res) => {
@@ -162,9 +173,10 @@ router.post("/add-multiple-users", [checkAdmin, upload.single('file')], async (r
             res.status(300).send("Unable to open file.");
         })
     } catch (err) {
-        console.log(err);
+        console.log(err.message);
         res.status(500).send("Internal error occured");
     }
 });
+
 // module.exports = router;
 export default router;

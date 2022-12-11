@@ -19,8 +19,8 @@ mixin tableRow({id, coordinatorId, subject, reason, leave, from, to, status})
                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                     <a href="/admin-dashboard/resources/application/records/#{id}/show" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-0">Show</a>
                     //- <a href="/admin-dashboard/resources/application/records/#{id}/edit" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-red-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-red-500" role="menuitem" tabindex="-1" id="menu-item-2">Delete</a>
+                    //- <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
+                    <button class="text-gray-700 block px-4 py-2 text-sm hover:bg-red-50 w-full text-left hover:border-l-4 hover:border-r-4 rounded-[3px] border-red-500" role="menuitem" tabindex="-1" id="menu-item-2" onclick="deleteRecord('#{id}')">Delete</button>
                 </div>
             </div>
         </td>

@@ -15,6 +15,7 @@ block content
             <a class="ml-auto" href="/admin-dashboard/resources/classes/records/#{classes.id}/edit">
                 <button class="ml-auto shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-cyan-300">Edit <img class="w-4 h-4 ml-2" src="../../../../../static/edit.svg" alt=""></button>
             </a>
+            <button class="ml-4 shadow-md p-1 px-2 rounded-md m-1 flex items-center bg-white hover:bg-[#FF0000af]" onclick="deleteRecord('#{classes.id}')">Delete <img class="w-4 h-4 ml-2" src="../../../../../static/delete.svg" alt=""></button>
         </div>
 
         <div id="class-detail-container" class="sm:flex flex-wrap  mt-8">
@@ -71,3 +72,6 @@ block content
             </div>
         </div>  
     </div>
+
+
+    script(src="../../../../../../../javascript/admin/classes/classesShow.js")

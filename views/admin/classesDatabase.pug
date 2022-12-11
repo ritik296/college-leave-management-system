@@ -17,7 +17,7 @@ mixin tableRow({id, branch, semester, section, coordinatorId, createdAt})
                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                     <a href="/admin-dashboard/resources/classes/records/#{id}/show" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-0">Show</a>
                     <a href="/admin-dashboard/resources/classes/records/#{id}/edit" class="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-blue-500" role="menuitem" tabindex="-1" id="menu-item-1">Edit</a>
-                    <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-red-50 hover:border-l-4 hover:border-r-4 rounded-[3px] border-red-500" role="menuitem" tabindex="-1" id="menu-item-2">Delete</a>
+                    <button class="text-gray-700 block px-4 py-2 text-sm hover:bg-red-50 w-full text-left hover:border-l-4 hover:border-r-4 rounded-[3px] border-red-500" role="menuitem" tabindex="-1" id="menu-item-2" onclick="deleteRecord('#{id}')">Delete</button>
                 </div>
             </div>
         </td>
@@ -33,19 +33,8 @@ block content
 
             <h1 class="text-white font-bold text-3xl text-center mt-10 mb-5">Filter Records</h1>
 
-            <label for="name" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Name</label>
-            <input type="text" id="name" placeholder="Name" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
-            <label for="contact" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Contact</label>
-            <input type="text" id="contact" placeholder="Contact" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
-            <label for="user-id" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">User ID</label>
-            <input type="text" id="user-id" placeholder="User ID" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
-            <label for="role" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Role</label>
-            <select id="role" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
-                <option disabled selected value="" class="hidden">Select</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="hod">Head of Department</option>
-            </select>
+            <label for="coordinatorId" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Coordinator ID</label>
+            <input type="text" id="coordinatorId" placeholder="Enter Coordinator ID" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
             <label for="branch" class="block mb-1 mt-3 mx-3 text-white font-bold text-xl dark:text-white">Branch</label>
             <select id="branch" class="h-10 px-4 mx-3 rounded-lg bg-white shadow-md focus:outline-none">
                 <option disabled selected value="" class="hidden">Select</option>

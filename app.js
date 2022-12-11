@@ -35,7 +35,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/application', application);
 app.use('/api/v1/class', classes);
 app.use('/api/v1/otp', otp);
-app.use('/api/admin/', adminApi);
+// app.use('/api/admin/', adminApi);
 app.use('/upload', upload);
 
 import admin from './routes/admin/admin.js';

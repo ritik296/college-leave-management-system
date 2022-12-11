@@ -104,6 +104,13 @@ async function sendDataToServer(){
         update.innerText = resData['error'];
         console.log(resData['error']);
     }
+    else if(res.status == 404){
+        let resData = await res.json();
+        update.classList.remove('text-green-500');
+        update.classList.add('text-red-500');
+        update.innerText = resData['error'];
+        console.log(resData['error']);
+    }
     closeSpinner();
 }
 

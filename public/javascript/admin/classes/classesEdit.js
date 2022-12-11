@@ -43,7 +43,7 @@ function addTableRow(){
     tableRowCount++;
 }
 
-function addClasses(){
+function updateClasses(){
     openSpinner();
     classJson.branch = branch.value;
     classJson.semester = semester.value;
@@ -72,19 +72,19 @@ function addClasses(){
         });
     }
     console.log(classJson)
-    // sendDataToServer();
+    sendDataToServer();
 }
 
 async function sendDataToServer(){
 
-    let res = await fetch('/api/v1/class/add_class', {
-        method: 'POST',
+    let res = await fetch('/api/v1/class/update-classes', {
+        method: 'PUT',
         body: JSON.stringify(classJson),
         headers: {
             'Content-type': 'application/json; charset=UTF-8', "admin-token": `${sessionStorage.getItem('admin-token')}`
         }
     });
-
+    console.log(res.status)
     if(res.status == 401) {
         alert("Login with correct credentails.");
         sessionStorage.clear();
@@ -95,8 +95,18 @@ async function sendDataToServer(){
         update.classList.remove('text-red-500');
         update.classList.add('text-green-500');
         update.innerText = resData['message'];
+        alert(resData['message']);
+        // closeSpinner();
+        // history.back();
     }
     else if(res.status == 400){
+        let resData = await res.json();
+        update.classList.remove('text-green-500');
+        update.classList.add('text-red-500');
+        update.innerText = resData['error'];
+        console.log(resData['error']);
+    }
+    else if(res.status == 404){
         let resData = await res.json();
         update.classList.remove('text-green-500');
         update.classList.add('text-red-500');
