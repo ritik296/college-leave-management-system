@@ -24,10 +24,12 @@ router.post('/send_application', [middlewares.fetchuser, middlewares.upload.sing
         let tody = `${(new Date()).getFullYear()}-${(new Date()).getMonth() + 1}-${(new Date()).getDate()}`;
         const application = await Application.findOne({senderId: user.id}).select('to').sort({to: -1});
 
-        let to = (new Date(application.to)).getTime();
-        let current = Date.now();
-        if(to > current){ 
-            return res.status(201).json({'message': "Your application in under consideration."});
+        if(application){
+            let to = (new Date(application.to)).getTime();
+            let current = Date.now();
+            if(to > current){ 
+                return res.status(201).json({'message': "Your application in under consideration."});
+            }
         }
 
         const teacher = await Classes.findOne({branch: user.branch, semester: user.semester, section: user.section}).select("-_id");

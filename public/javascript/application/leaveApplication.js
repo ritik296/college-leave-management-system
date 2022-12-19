@@ -93,6 +93,11 @@ async function sendApplication() {
         alert('Internal server error');
         closeSpinner();
     }
+    if(res.status == 404){
+        let resData = await res.json();
+        alert(resData['error']);
+        closeSpinner();
+    }
     if(res.status == 201){
         let resData = await res.json();
         alert(resData.message);
