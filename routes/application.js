@@ -31,6 +31,10 @@ router.post('/send_application', [middlewares.fetchuser, middlewares.upload.sing
         }
 
         const teacher = await Classes.findOne({branch: user.branch, semester: user.semester, section: user.section}).select("-_id");
+
+        if(!teacher){
+            return res.status(404).json({'error': "No such class exist contact to your coordinator"});
+        }
         // const informerTecher = await Classes.findOne({branch: user.branch, semester: user.semester, section: user.section}).select('teachers.teacherId');
         // console.log(teacher);
 
