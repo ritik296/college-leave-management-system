@@ -52,10 +52,10 @@ The Leave Application Management System is a user-friendly web application desig
    git clone https://github.com/yourusername/leave-management-system.git
    cd leave-management-system
 2. Install dependency:
-   '''bash
+   ```bash
    npm i
-   '''
+   ```
 3. Run app:
-   '''bash
+   ```bash
    npm run dev
-   '''
+   ```
