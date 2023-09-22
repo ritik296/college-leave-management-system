@@ -31,7 +31,7 @@ The Leave Application Management System is a user-friendly web application desig
 
 ## Technologies
 
-- **Frontend:** HTML, CSS, JavaScript, [Frontend Framework, e.g., React.js]
+- **Frontend:** HTML, CSS, JavaScript, [Frontend Framework, e.g., View engine Pug]
 - **Backend:** [Backend Framework, e.g., Express.js], MongoDB (Database)
 - **Authentication:** [Authentication method, e.g., JWT]
 - **Deployment:** [Hosting platform, e.g., Heroku]
@@ -51,3 +51,11 @@ The Leave Application Management System is a user-friendly web application desig
    ```bash
    git clone https://github.com/yourusername/leave-management-system.git
    cd leave-management-system
+2. Install dependency:
+   '''bash
+   npm i
+   '''
+3. Run app:
+   '''bash
+   npm run dev
+   '''
