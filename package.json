@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "engines": {"node": "19.0.0"},
+  "engines": {"node": "18.x"},
   "scripts": {
     "dev": "nodemon app.js",
     "build:css": "postcss public/styles/tailwind.css -o public/styles/styles.css",
