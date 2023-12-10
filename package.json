@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "nodemon app.js",
     "build:css": "postcss public/styles/tailwind.css -o public/styles/styles.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
