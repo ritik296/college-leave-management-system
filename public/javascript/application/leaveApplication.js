@@ -121,3 +121,5 @@ function textChange(){
 function onAttachFile() {
     attachedFileName.innerHTML = `<p><span class="font-bold">Attached file: - </span>${file.files.item(0).name}</p>`;
 }
+
+// console.log

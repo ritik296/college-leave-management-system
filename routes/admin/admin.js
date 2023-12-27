@@ -9,6 +9,10 @@ router.use('/resources/user', user);
 router.use('/resources/application', application);
 router.use('/resources/classes', classes);
 
+router.get('/', getAdminCookie, async (req, res) => {
+    return res.redirect('/admin-dashboard/resources/application');
+})
+
 router.get('/login', async (req, res) => {
     try {
         res.status(200).render('admin/login');

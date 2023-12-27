@@ -12,7 +12,7 @@ const middlewares = {
     upload: upload
 }
 
-router.post('/send_application', [middlewares.fetchuser, middlewares.upload.single('file')], async (req, res) => {
+router.post('/send_application', [middlewares.fetchuser, middlewares.upload.single('yarn ')], async (req, res) => {
     try {
         const userId = req.user.id;
         const user = await User.findOne({"_id": userId}).select("-password");

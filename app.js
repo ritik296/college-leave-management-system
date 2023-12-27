@@ -21,8 +21,9 @@ app.use('/uploads', express.static('uploads'));
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(path.dirname(__filename), 'public')));
+app.use(express.static(path.join(path.dirname(__filename), 'views')));
 
-app.set('views', path.join(path.dirname(__filename), 'views'));
+// app.set('views', path.join(path.dirname(__filename), 'views'));
 
 import auth from './routes/auth.js';
 import application from './routes/application.js';
@@ -30,6 +31,10 @@ import classes from './routes/class.js';
 import otp from './routes/otp.js';
 import adminApi from './routes/admin/adminApi.js';
 import upload from './routes/uploadImage.js';
+
+import urlFor from "./middleware/urlFor.js";
+
+app.use(urlFor);
 
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/application', application);

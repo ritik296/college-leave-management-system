@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 
 async function getAdminCookie(req, res, next) {
-    const token = req.cookies['admin-token'];
+    const token = await req.cookies['admin-token'];
     // console.log(token);
     if(!token) {
-        return res.status(401).render('admin/login');
+        return res.redirect('/admin-dashboard/login');
     }
     try {
         const data = jwt.verify(token, process.env.ADMIN_SECRET);
